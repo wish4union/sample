@@ -20,13 +20,13 @@ function App() {
       try {
         // Health check
         const BASE_URL = process.env.REACT_APP_API_URL;
-        const health = await fetch("${BASE_URL}/health");
+        const health = await fetch(`${BASE_URL}/health`);
         setBackendOk(health.ok);
 
         // Summary counts (fire in parallel)
         const [todayRes, upcomingRes] = await Promise.all([
-          fetch("${BASE_URL}/birthdays/today"),
-          fetch("${BASE_URL}/birthdays/upcoming?days=7")
+          fetch(`${BASE_URL}/birthdays/today`),
+          fetch(`${BASE_URL}/birthdays/upcoming?days=7`)
         ]);
         const todayData    = await todayRes.json();
         const upcomingData = await upcomingRes.json();
