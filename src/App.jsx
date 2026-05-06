@@ -19,7 +19,8 @@ function App() {
     async function init() {
       try {
         // Health check
-        const health = await fetch("/health");
+        const BASE_URL = process.env.REACT_APP_API_URL;
+        const health = await fetch("${BASE_URL}/health");
         setBackendOk(health.ok);
 
         // Summary counts (fire in parallel)
