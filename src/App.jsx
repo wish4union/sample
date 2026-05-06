@@ -28,6 +28,7 @@ function App() {
           fetch(`${BASE_URL}/birthdays/upcoming?days=7`)
         ]);
         const todayData    = await todayRes.json();
+        console.log(todayRes,todayCount,upcomingCount,"Test Data");
         const upcomingData = await upcomingRes.json();
         setTodayCount(todayData.count ?? 0);
         setUpcomingCount(upcomingData.count ?? 0);

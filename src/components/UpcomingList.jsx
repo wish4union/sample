@@ -11,11 +11,11 @@ function UpcomingList() {
   const [upcoming, setUpcoming] = useState([]);
   const [loading,  setLoading]  = useState(true);
   const [error,    setError]    = useState(null);
-
+const BASE_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     async function fetchUpcoming() {
       try {
-        const res  = await fetch("/birthdays/upcoming?days=7");
+        const res  = await fetch(`${BASE_URL}/birthdays/upcoming?days=7`);
         if (!res.ok) throw new Error(`Server returned ${res.status}`);
         const data = await res.json();
         // Sort by daysUntil ascending so the nearest birthdays appear first

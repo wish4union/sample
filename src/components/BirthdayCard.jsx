@@ -20,7 +20,7 @@ function BirthdayCard({ member, isToday = false }) {
   // Track the send state: idle | loading | success | error
   const [sendState, setSendState] = useState("idle");
   const [resultMsg, setResultMsg] = useState("");
-
+const BASE_URL = process.env.REACT_APP_API_URL;
   const colors = DEPARTMENT_COLORS[member.department] || { bg: "#f5f5f5", accent: "#555" };
 
   // Formats "MM-DD" → "April 22" style
@@ -38,7 +38,7 @@ function BirthdayCard({ member, isToday = false }) {
     setResultMsg("");
     try {
       const res = await fetch(
-        `/send-wish/${encodeURIComponent(member.name)}`,
+        `${BASE_URL}/send-wish/${encodeURIComponent(member.name)}`,
         { method: "POST" }
       );
       const data = await res.json();

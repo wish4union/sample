@@ -11,12 +11,12 @@ function BirthdayList() {
   const [birthdays, setBirthdays] = useState([]);
   const [loading,   setLoading]   = useState(true);
   const [error,     setError]     = useState(null);
-
+const BASE_URL = process.env.REACT_APP_API_URL;
   // Fetch today's birthdays from the backend on mount
   useEffect(() => {
     async function fetchTodayBirthdays() {
       try {
-        const res  = await fetch("/birthdays/today");
+        const res  = await fetch(`${BASE_URL}/birthdays/today`);
         if (!res.ok) throw new Error(`Server returned ${res.status}`);
         const data = await res.json();
         setBirthdays(data.staff || []);
