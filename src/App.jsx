@@ -19,13 +19,13 @@ function App() {
     async function init() {
       try {
         // Health check
-        const health = await fetch("https://samplebackend-nask.onrender.com/health");
+        const health = await fetch("/health");
         setBackendOk(health.ok);
 
         // Summary counts (fire in parallel)
         const [todayRes, upcomingRes] = await Promise.all([
-          fetch("https://samplebackend-nask.onrender.com/birthdays/today"),
-          fetch("https://samplebackend-nask.onrender.com/birthdays/upcoming?days=7")
+          fetch("/birthdays/today"),
+          fetch("/birthdays/upcoming?days=7")
         ]);
         const todayData    = await todayRes.json();
         const upcomingData = await upcomingRes.json();
