@@ -25,8 +25,8 @@ function App() {
 
         // Summary counts (fire in parallel)
         const [todayRes, upcomingRes] = await Promise.all([
-          fetch("/birthdays/today"),
-          fetch("/birthdays/upcoming?days=7")
+          fetch("${BASE_URL}/birthdays/today"),
+          fetch("${BASE_URL}/birthdays/upcoming?days=7")
         ]);
         const todayData    = await todayRes.json();
         const upcomingData = await upcomingRes.json();
