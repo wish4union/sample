@@ -22,7 +22,7 @@ function App() {
         const BASE_URL = process.env.REACT_APP_API_URL;
         const health = await fetch(`${BASE_URL}/health`);
         setBackendOk(health.ok);
-
+console.log("BASE_URL:", process.env.REACT_APP_API_URL);
         // Summary counts (fire in parallel)
         const [todayRes, upcomingRes] = await Promise.all([
           fetch(`${BASE_URL}/birthdays/today`),
